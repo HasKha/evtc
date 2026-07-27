@@ -11,6 +11,13 @@ namespace GW2Scratch.ArcdpsLogManager.Updates
 {
 	public class ProgramUpdateChecker
 	{
+		/// <summary>
+		/// The release feed of this fork. Upstream (gw2scratch) publishes its own feed at
+		/// http://gw2scratch.com/releases/manager.json; pointing at it here would offer our users
+		/// upstream's Eto builds as an "update", which would replace this Avalonia build.
+		/// </summary>
+		public const string DefaultFeedUrl = "https://raw.githubusercontent.com/HasKha/evtc/master/releases/manager.json";
+
 		private readonly HttpClient httpClient = new HttpClient()
 		{
 			DefaultRequestHeaders =

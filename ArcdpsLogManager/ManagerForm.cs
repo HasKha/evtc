@@ -39,7 +39,7 @@ namespace GW2Scratch.ArcdpsLogManager
 		private readonly Cooldown gridRefreshCooldown = new Cooldown(TimeSpan.FromSeconds(10));
 		private readonly Cooldown filterRefreshCooldown = new Cooldown(TimeSpan.FromSeconds(10));
 
-		private ProgramUpdateChecker ProgramUpdateChecker { get; } = new ProgramUpdateChecker("http://gw2scratch.com/releases/manager.json");
+		private ProgramUpdateChecker ProgramUpdateChecker { get; } = new ProgramUpdateChecker(ProgramUpdateChecker.DefaultFeedUrl);
 		private ImageProvider ImageProvider { get; } = new ImageProvider();
 		private LogFinder LogFinder { get; } = new LogFinder();
 

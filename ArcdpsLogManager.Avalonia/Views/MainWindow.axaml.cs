@@ -140,8 +140,9 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.Views
 		private static void OnOpenDonateClick(object? sender, RoutedEventArgs e) =>
 			OpenUrl("https://ko-fi.com/sejsel");
 
+		// This fork's releases, not upstream's — this is where the builds users are running come from.
 		private static void OnOpenChangelogClick(object? sender, RoutedEventArgs e) =>
-			OpenUrl("https://github.com/gw2scratch/evtc/releases");
+			OpenUrl("https://github.com/HasKha/evtc/releases");
 
 		private static void OnOpenWebsiteClick(object? sender, RoutedEventArgs e) =>
 			OpenUrl("https://gw2scratch.com/");

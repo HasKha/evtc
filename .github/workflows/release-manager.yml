@@ -24,20 +24,22 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Package Log Manager (Windows, WPF)
-      run: dotnet publish ArcdpsLogManager.Wpf --configuration Release -r win-x64 --no-self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/win64/
-    - name: Package Log Manager (Windows, WPF, self-contained)
-      run: dotnet publish ArcdpsLogManager.Wpf --configuration Release -r win-x64 --self-contained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/win64-sc/
-    - name: Package Log Manager (Linux, GTK)
-      run: dotnet publish ArcdpsLogManager.Gtk --configuration Release -r linux-x64 --no-self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/linux64/
-    - name: Package Log Manager (Linux, GTK, self-contained)
-      run: dotnet publish ArcdpsLogManager.Gtk --configuration Release -r linux-x64 --self-contained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/linux64-sc/
+    # This fork ships the Avalonia UI. The Eto launchers (ArcdpsLogManager.Wpf / .Gtk) still build
+    # but are no longer packaged — Avalonia.Desktop covers both platforms from a single project.
+    - name: Package Log Manager (Windows)
+      run: dotnet publish ArcdpsLogManager.Avalonia --configuration Release -r win-x64 --no-self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/win64/
+    - name: Package Log Manager (Windows, self-contained)
+      run: dotnet publish ArcdpsLogManager.Avalonia --configuration Release -r win-x64 --self-contained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/win64-sc/
+    - name: Package Log Manager (Linux)
+      run: dotnet publish ArcdpsLogManager.Avalonia --configuration Release -r linux-x64 --no-self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/linux64/
+    - name: Package Log Manager (Linux, self-contained)
+      run: dotnet publish ArcdpsLogManager.Avalonia --configuration Release -r linux-x64 --self-contained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -o artifacts/manager/linux64-sc/
     - name: Prettify executable filenames
       run: |
-          mv artifacts/manager/win64/GW2Scratch.ArcdpsLogManager.Wpf.exe artifacts/manager/win64/ArcdpsLogManager.exe
-          mv artifacts/manager/win64-sc/GW2Scratch.ArcdpsLogManager.Wpf.exe artifacts/manager/win64-sc/ArcdpsLogManager.exe
-          mv artifacts/manager/linux64/GW2Scratch.ArcdpsLogManager.Gtk artifacts/manager/linux64/ArcdpsLogManager
-          mv artifacts/manager/linux64-sc/GW2Scratch.ArcdpsLogManager.Gtk artifacts/manager/linux64-sc/ArcdpsLogManager
+          mv artifacts/manager/win64/GW2Scratch.ArcdpsLogManager.Avalonia.exe artifacts/manager/win64/ArcdpsLogManager.exe
+          mv artifacts/manager/win64-sc/GW2Scratch.ArcdpsLogManager.Avalonia.exe artifacts/manager/win64-sc/ArcdpsLogManager.exe
+          mv artifacts/manager/linux64/GW2Scratch.ArcdpsLogManager.Avalonia artifacts/manager/linux64/ArcdpsLogManager
+          mv artifacts/manager/linux64-sc/GW2Scratch.ArcdpsLogManager.Avalonia artifacts/manager/linux64-sc/ArcdpsLogManager
     - name: Build archives
       run: |
           Compress-Archive artifacts/manager/win64/ArcdpsLogManager.exe artifacts/manager/win64/Log.Manager.Windows.zip
