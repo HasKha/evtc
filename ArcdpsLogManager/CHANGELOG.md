@@ -2,6 +2,29 @@
 
 This is the full changelog of the arcdps Log Manager.
 
+## Log Manager v2.0.0
+
+The user interface has been rewritten in Avalonia. Windows and Linux builds now come from a
+single application rather than the separate WPF and GTK launchers.
+
+#### Interface
+- Reworked the menu bar and added a View menu with filter toggles
+- Reworked the left panel, right sidebar and encounter filter tree layouts
+- Added a settings window, an about window and a loading window
+- Added the log count to the encounter filter
+- Added click-and-drag selection to the main list
+- Added a right-click context menu on logs (reparse, delete, copy URL)
+- Added the sum of encounter times and session length
+- Adjusted font sizes and removed the cell selection box
+
+#### Fixes
+- Fixed logs occasionally getting stuck on processing
+- Fixed the main window not syncing as logs are added
+- Fixed the executable icon
+
+#### Notes
+- Includes everything up to upstream v1.16.1
+
 ## Log Manager v1.16.1
 
 #### Fixes

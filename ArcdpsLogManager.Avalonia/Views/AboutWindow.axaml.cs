@@ -10,7 +10,7 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.Views
 {
 	public partial class AboutWindow : Window
 	{
-		private const string UpdateFeedUrl = "http://gw2scratch.com/releases/manager.json";
+		private const string UpdateFeedUrl = ProgramUpdateChecker.DefaultFeedUrl;
 
 		private AboutWindowViewModel ViewModel => (AboutWindowViewModel)DataContext!;
 

@@ -52,7 +52,7 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.ViewModels
 
 		private readonly LogDataUpdater logDataUpdater = new LogDataUpdater();
 		private readonly ProgramUpdateChecker programUpdateChecker =
-			new ProgramUpdateChecker("http://gw2scratch.com/releases/manager.json");
+			new ProgramUpdateChecker(ProgramUpdateChecker.DefaultFeedUrl);
 		private LogCompressionProcessor? compressionProcessor;
 
 		[ObservableProperty] private string searchQuery = "";
