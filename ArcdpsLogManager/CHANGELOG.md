@@ -2,7 +2,11 @@
 
 This is the full changelog of the arcdps Log Manager.
 
-## Unreleased
+## Log Manager v1.16.1
+
+#### Fixes
+- Fixed log parsing crash due to unknown skill ids
+- Fixed multiple commander tags in log panel
 
 #### EVTC Inspector notes
 - Added Tick events

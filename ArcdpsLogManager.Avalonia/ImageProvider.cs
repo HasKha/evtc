@@ -6,6 +6,7 @@ using GW2Scratch.EVTCAnalytics.GameData;
 using GW2Scratch.EVTCAnalytics.GameData.Encounters;
 using GW2Scratch.EVTCAnalytics.Model;
 using GW2Scratch.EVTCAnalytics.Model.Agents;
+using GW2Scratch.EVTCAnalytics.Parsed.Enums;
 
 namespace GW2Scratch.ArcdpsLogManager.Avalonia
 {
@@ -80,7 +81,24 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia
 		private Lazy<Bitmap> TinyIconRaid { get; } = new Lazy<Bitmap>(Resources.GetTinyIconRaid);
 		private Lazy<Bitmap> TinyIconFractals { get; } = new Lazy<Bitmap>(Resources.GetTinyIconFractals);
 		private Lazy<Bitmap> TinyIconLog { get; } = new Lazy<Bitmap>(Resources.GetTinyIconGuildRegistrar);
-		private Lazy<Bitmap> TinyIconCommander { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommander);
+		private Lazy<Bitmap> TinyCommanderRed { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderRed);
+		private Lazy<Bitmap> TinyCommanderOrange { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderOrange);
+		private Lazy<Bitmap> TinyCommanderYellow { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderYellow);
+		private Lazy<Bitmap> TinyCommanderGreen { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderGreen);
+		private Lazy<Bitmap> TinyCommanderCyan { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderCyan);
+		private Lazy<Bitmap> TinyCommanderBlue { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderBlue);
+		private Lazy<Bitmap> TinyCommanderPurple { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderPurple);
+		private Lazy<Bitmap> TinyCommanderPink { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderPink);
+		private Lazy<Bitmap> TinyCommanderWhite { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCommanderWhite);
+		private Lazy<Bitmap> TinyCatmanderRed { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderRed);
+		private Lazy<Bitmap> TinyCatmanderOrange { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderOrange);
+		private Lazy<Bitmap> TinyCatmanderYellow { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderYellow);
+		private Lazy<Bitmap> TinyCatmanderGreen { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderGreen);
+		private Lazy<Bitmap> TinyCatmanderCyan { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderCyan);
+		private Lazy<Bitmap> TinyCatmanderBlue { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderBlue);
+		private Lazy<Bitmap> TinyCatmanderPurple { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderPurple);
+		private Lazy<Bitmap> TinyCatmanderPink { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderPink);
+		private Lazy<Bitmap> TinyCatmanderWhite { get; } = new Lazy<Bitmap>(Resources.GetTinyIconCatmanderWhite);
 		private Lazy<Bitmap> TinyIconRaidEncounter { get; } = new Lazy<Bitmap>(Resources.GetTinyIconRaidEncounter);
 		private Lazy<Bitmap> TinyIconTrainingArea { get; } = new Lazy<Bitmap>(Resources.GetTinyIconTrainingArea);
 		private Lazy<Bitmap> TinyIconWorldVersusWorld { get; } = new Lazy<Bitmap>(Resources.GetTinyIconWorldVersusWorld);
@@ -247,7 +265,31 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia
 		public Bitmap GetTinyLogIcon() => TinyIconLog.Value;
 		public Bitmap GetTinyFractalsIcon() => TinyIconFractals.Value;
 		public Bitmap GetTinyRaidIcon() => TinyIconRaid.Value;
-		public Bitmap GetTinyCommanderIcon() => TinyIconCommander.Value;
+		public Bitmap GetTinyCommanderIcon(CommanderTags tags)
+		{
+			return tags switch
+			{
+				CommanderTags.RedCommanderTag => TinyCommanderRed.Value,
+				CommanderTags.OrangeCommanderTag => TinyCommanderOrange.Value,
+				CommanderTags.YellowCommanderTag => TinyCommanderYellow.Value,
+				CommanderTags.GreenCommanderTag => TinyCommanderGreen.Value,
+				CommanderTags.CyanCommanderTag => TinyCommanderCyan.Value,
+				CommanderTags.BlueCommanderTag => TinyCommanderBlue.Value,
+				CommanderTags.PurpleCommanderTag => TinyCommanderPurple.Value,
+				CommanderTags.PinkCommanderTag => TinyCommanderPink.Value,
+				CommanderTags.WhiteCommanderTag => TinyCommanderWhite.Value,
+				CommanderTags.RedCatmanderTag => TinyCatmanderRed.Value,
+				CommanderTags.OrangeCatmanderTag => TinyCatmanderOrange.Value,
+				CommanderTags.YellowCatmanderTag => TinyCatmanderYellow.Value,
+				CommanderTags.GreenCatmanderTag => TinyCatmanderGreen.Value,
+				CommanderTags.CyanCatmanderTag => TinyCatmanderCyan.Value,
+				CommanderTags.BlueCatmanderTag => TinyCatmanderBlue.Value,
+				CommanderTags.PurpleCatmanderTag => TinyCatmanderPurple.Value,
+				CommanderTags.PinkCatmanderTag => TinyCatmanderPink.Value,
+				CommanderTags.WhiteCatmanderTag => TinyCatmanderWhite.Value,
+				_ => throw new ArgumentOutOfRangeException(nameof(tags)),
+			};
+		}
 		public Bitmap GetTinyRaidEncounterIcon() => TinyIconRaidEncounter.Value;
 		public Bitmap GetTinyTrainingAreaIcon() => TinyIconTrainingArea.Value;
 		public Bitmap GetTinyWorldVersusWorldIcon() => TinyIconWorldVersusWorld.Value;

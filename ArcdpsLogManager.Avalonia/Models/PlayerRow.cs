@@ -40,7 +40,7 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.Models
 			AccountName = player.AccountName?.TrimStart(':') ?? "";
 			Subgroup = player.Subgroup;
 			IsCommander = player.Tag == PlayerTag.Commander;
-			TagIcon = IsCommander ? images.GetTinyCommanderIcon() : null;
+			TagIcon = IsCommander ? images.GetTinyCommanderIcon(player.TagType) : null;
 		}
 	}
 }

@@ -98,7 +98,24 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia
 		public static Bitmap GetTinyIconRaid() => GetImage("ArenaNet.raid_icon_32px.png");
 		public static Bitmap GetTinyIconFractals() => GetImage("ArenaNet.fractals_icon_32px.png");
 		public static Bitmap GetTinyIconGuildRegistrar() => GetImage("ArenaNet.guild_registrar_icon_26px.png");
-		public static Bitmap GetTinyIconCommander() => GetImage("ArenaNet.commander_tag_red_32px.png");
+		public static Bitmap GetTinyIconCommanderRed() => GetImage("ArenaNet.tags.Commander_tag_(red).png");
+		public static Bitmap GetTinyIconCommanderOrange() => GetImage("ArenaNet.tags.Commander_tag_(orange).png");
+		public static Bitmap GetTinyIconCommanderYellow() => GetImage("ArenaNet.tags.Commander_tag_(yellow).png");
+		public static Bitmap GetTinyIconCommanderCyan() => GetImage("ArenaNet.tags.Commander_tag_(cyan).png");
+		public static Bitmap GetTinyIconCommanderGreen() => GetImage("ArenaNet.tags.Commander_tag_(green).png");
+		public static Bitmap GetTinyIconCommanderBlue() => GetImage("ArenaNet.tags.Commander_tag_(blue).png");
+		public static Bitmap GetTinyIconCommanderPurple() => GetImage("ArenaNet.tags.Commander_tag_(purple).png");
+		public static Bitmap GetTinyIconCommanderPink() => GetImage("ArenaNet.tags.Commander_tag_(pink).png");
+		public static Bitmap GetTinyIconCommanderWhite() => GetImage("ArenaNet.tags.Commander_tag_(white).png");
+		public static Bitmap GetTinyIconCatmanderRed() => GetImage("ArenaNet.tags.Catmander_tag_(red).png");
+		public static Bitmap GetTinyIconCatmanderOrange() => GetImage("ArenaNet.tags.Catmander_tag_(orange).png");
+		public static Bitmap GetTinyIconCatmanderYellow() => GetImage("ArenaNet.tags.Catmander_tag_(yellow).png");
+		public static Bitmap GetTinyIconCatmanderCyan() => GetImage("ArenaNet.tags.Catmander_tag_(cyan).png");
+		public static Bitmap GetTinyIconCatmanderGreen() => GetImage("ArenaNet.tags.Catmander_tag_(green).png");
+		public static Bitmap GetTinyIconCatmanderBlue() => GetImage("ArenaNet.tags.Catmander_tag_(blue).png");
+		public static Bitmap GetTinyIconCatmanderPurple() => GetImage("ArenaNet.tags.Catmander_tag_(purple).png");
+		public static Bitmap GetTinyIconCatmanderPink() => GetImage("ArenaNet.tags.Catmander_tag_(pink).png");
+		public static Bitmap GetTinyIconCatmanderWhite() => GetImage("ArenaNet.tags.Catmander_tag_(white).png");
 		public static Bitmap GetTinyIconRaidEncounter() => GetImage("ArenaNet.raid_encounter_icon_32px.png");
 		public static Bitmap GetTinyIconTrainingArea() => GetImage("ArenaNet.training_area_32px.png");
 		public static Bitmap GetTinyIconWorldVersusWorld() => GetImage("ArenaNet.world_vs_world_32px.png");
@@ -233,12 +250,12 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia
 		public static Bitmap GetMassiveKittyGolemIcon() => GetEncounterImage("Mini_Mister_Mittens");
 
 		// WORLD VS WORLD
-		public static Bitmap GetEternalBattlegroundsIcon() => GetEncounterImage("Commander_tag_yellow");
-		public static Bitmap GetRedBorderlandsIcon() => GetEncounterImage("Commander_tag_red");
-		public static Bitmap GetBlueBorderlandsIcon() => GetEncounterImage("Commander_tag_blue");
-		public static Bitmap GetGreenBorderlandsIcon() => GetEncounterImage("Commander_tag_green");
-		public static Bitmap GetObsidianSanctumIcon() => GetEncounterImage("Commander_tag_purple");
-		public static Bitmap GetEdgeOfTheMistsIcon() => GetEncounterImage("Commander_tag_white");
+		public static Bitmap GetEternalBattlegroundsIcon() => GetTinyIconCommanderYellow();
+		public static Bitmap GetRedBorderlandsIcon() => GetTinyIconCommanderRed();
+		public static Bitmap GetBlueBorderlandsIcon() => GetTinyIconCommanderBlue();
+		public static Bitmap GetGreenBorderlandsIcon() => GetTinyIconCommanderGreen();
+		public static Bitmap GetObsidianSanctumIcon() => GetTinyIconCommanderPurple();
+		public static Bitmap GetEdgeOfTheMistsIcon() => GetTinyIconCommanderWhite();
 		public static Bitmap GetArmisticeBastionIcon() => GetEncounterImage("Armistice_Bastion_Pass");
 
 		private static Bitmap GetEncounterImage(string iconName)
