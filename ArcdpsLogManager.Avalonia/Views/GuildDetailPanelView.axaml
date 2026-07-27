@@ -13,7 +13,7 @@
 
         <DockPanel IsVisible="{Binding HasSelection}" Margin="12">
             <StackPanel DockPanel.Dock="Top" Spacing="4" Margin="0,0,0,8">
-                <TextBlock FontSize="16" FontWeight="Bold" TextWrapping="Wrap">
+                <TextBlock FontSize="{DynamicResource AppFontSizeLarge}" FontWeight="Bold" TextWrapping="Wrap">
                     <Run Text="{Binding GuildName}" /><Run Text=" [" /><Run Text="{Binding GuildTag}" /><Run Text="]" />
                 </TextBlock>
                 <TextBlock Text="{Binding MemberCountText}" Opacity="0.8" />

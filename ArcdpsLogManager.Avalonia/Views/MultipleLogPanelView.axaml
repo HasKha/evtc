@@ -6,7 +6,7 @@
 
     <Panel IsVisible="{Binding HasSelection}" Margin="12">
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
-            <TextBlock Grid.Row="0" Text="{Binding CountText}" FontSize="16" FontWeight="Bold" />
+            <TextBlock Grid.Row="0" Text="{Binding CountText}" FontSize="{DynamicResource AppFontSizeLarge}" FontWeight="Bold" />
 
             <!-- Statistics -->
             <HeaderedContentControl Grid.Row="1" Header="Statistics" Theme="{StaticResource GroupBoxTheme}"
@@ -55,7 +55,7 @@
                                         CornerRadius="4" Padding="6,2" Margin="0,0,4,4">
                                     <StackPanel Orientation="Horizontal" Spacing="4">
                                         <TextBlock Text="{Binding}" VerticalAlignment="Center" />
-                                        <Button Content="✕" Padding="2,0" FontSize="10"
+                                        <Button Content="✕" Padding="2,0" FontSize="{DynamicResource AppFontSizeSmall}"
                                                 Background="Transparent" BorderThickness="0"
                                                 Command="{Binding $parent[ItemsControl].((vm:MultipleLogPanelViewModel)DataContext).RemoveTagCommand}"
                                                 CommandParameter="{Binding}" />

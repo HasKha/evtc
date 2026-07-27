@@ -7,10 +7,30 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <!-- The Eto build used a noticeably smaller/denser control size than Fluent's
-                 defaults; this drives the default font size on most Fluent control templates
-                 (buttons, text boxes, checkboxes, combo boxes, etc). -->
+            <!-- Font sizes. These are the defaults, matching the Eto build's noticeably smaller
+                 and denser look compared to Fluent's own defaults; FontSizeManager overwrites them
+                 at startup and whenever the settings change, so everything below refers to them
+                 with {DynamicResource} rather than hardcoding a number.
+
+                 AppFontSize is the base UI size (Settings.UiFontSize); Small/Medium/Large/Header
+                 are fixed offsets from it, used for small print, tab headers and panel titles so
+                 that the whole UI scales together. ControlContentThemeFontSize is Fluent's own key
+                 for the content of most control templates (buttons, text boxes, checkboxes, combo
+                 boxes, etc), kept one point below the base size. LogList and EncounterTree are the
+                 two independently configurable sizes. -->
+            <x:Double x:Key="AppFontSize">13</x:Double>
             <x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
+            <x:Double x:Key="AppFontSizeSmall">11</x:Double>
+            <x:Double x:Key="AppFontSizeMedium">14</x:Double>
+            <x:Double x:Key="AppFontSizeLarge">16</x:Double>
+            <x:Double x:Key="AppFontSizeHeader">18</x:Double>
+            <x:Double x:Key="LogListFontSize">13</x:Double>
+            <x:Double x:Key="LogListRowMinHeight">24</x:Double>
+            <x:Double x:Key="LogListIconSize">20</x:Double>
+            <x:Double x:Key="LogListSmallIconSize">18</x:Double>
+            <x:Double x:Key="EncounterTreeFontSize">13</x:Double>
+            <x:Double x:Key="EncounterTreeItemMinHeight">24</x:Double>
+            <x:Double x:Key="EncounterTreeIconSize">16</x:Double>
 
             <!-- The DataGrid's row selection highlight (DataGridRowSelectedBackgroundBrush etc,
                  untouched) is the only selection indicator we want. Avalonia's DataGrid separately
@@ -75,7 +95,7 @@
         <!-- FontSize is an inherited property; setting it on the root covers plain TextBlocks
              that don't set their own size (ControlContentThemeFontSize above covers the rest). -->
         <Style Selector="Window">
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontSize" Value="{DynamicResource AppFontSize}" />
         </Style>
         <Style Selector="Button">
             <Setter Property="Padding" Value="10,4" />
@@ -128,7 +148,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontSize" Value="{DynamicResource AppFontSize}" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>

@@ -23,7 +23,7 @@
          Matches the main window's tabs as a result, since neither overrides the theme. -->
     <Window.Styles>
         <Style Selector="TabItem">
-            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontSize" Value="{DynamicResource AppFontSizeMedium}" />
         </Style>
     </Window.Styles>
 
@@ -166,8 +166,52 @@
                                 <StackPanel Spacing="4">
                                     <CheckBox Content="Use compact spacing" IsChecked="{Binding Settings.CompactUi}" />
                                     <TextBlock Text="Shrinks padding and control sizes throughout the app (tabs, buttons, lists)."
-                                               Opacity="0.7" TextWrapping="Wrap" FontSize="11" />
+                                               Opacity="0.7" TextWrapping="Wrap" FontSize="{DynamicResource AppFontSizeSmall}" />
                                 </StackPanel>
+                            </StackPanel>
+                        </HeaderedContentControl>
+
+                        <!-- Font sizes apply immediately, so the effect of a change is visible in
+                             this window as it is made. The spinner buttons are turned back on here
+                             (the app-wide NumericUpDown style hides them) since stepping a font
+                             size up and down a point at a time is exactly how these get used. -->
+                        <HeaderedContentControl Header="Font size" Theme="{StaticResource GroupBoxTheme}">
+                            <StackPanel Spacing="10">
+                                <StackPanel Spacing="4">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock Text="Interface" VerticalAlignment="Center" Width="100" />
+                                        <NumericUpDown Value="{Binding UiFontSize}" ShowButtonSpinner="True"
+                                                       Minimum="{Binding MinimumFontSize}"
+                                                       Maximum="{Binding MaximumFontSize}"
+                                                       Increment="1" FormatString="0" Width="110" />
+                                    </StackPanel>
+                                    <TextBlock Text="The base size for the whole application. Headings, small print and tab labels scale along with it."
+                                               Opacity="0.7" TextWrapping="Wrap" FontSize="{DynamicResource AppFontSizeSmall}" />
+                                </StackPanel>
+                                <StackPanel Spacing="4">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock Text="Log list" VerticalAlignment="Center" Width="100" />
+                                        <NumericUpDown Value="{Binding LogListFontSize}" ShowButtonSpinner="True"
+                                                       Minimum="{Binding MinimumFontSize}"
+                                                       Maximum="{Binding MaximumFontSize}"
+                                                       Increment="1" FormatString="0" Width="110" />
+                                    </StackPanel>
+                                    <TextBlock Text="The log table on the Logs tab. Rows grow and shrink with the text."
+                                               Opacity="0.7" TextWrapping="Wrap" FontSize="{DynamicResource AppFontSizeSmall}" />
+                                </StackPanel>
+                                <StackPanel Spacing="4">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock Text="Encounter tree" VerticalAlignment="Center" Width="100" />
+                                        <NumericUpDown Value="{Binding EncounterTreeFontSize}" ShowButtonSpinner="True"
+                                                       Minimum="{Binding MinimumFontSize}"
+                                                       Maximum="{Binding MaximumFontSize}"
+                                                       Increment="1" FormatString="0" Width="110" />
+                                    </StackPanel>
+                                    <TextBlock Text="The encounter list at the bottom of the filter sidebar."
+                                               Opacity="0.7" TextWrapping="Wrap" FontSize="{DynamicResource AppFontSizeSmall}" />
+                                </StackPanel>
+                                <Button Content="Reset to defaults" HorizontalAlignment="Left"
+                                        Command="{Binding ResetFontSizesCommand}" />
                             </StackPanel>
                         </HeaderedContentControl>
                     </StackPanel>

@@ -31,6 +31,16 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.ViewModels
 		[ObservableProperty] private bool excludeShortLogs;
 		[ObservableProperty] private string minimumLogDurationText;
 
+		// Font sizes are decimal? to match NumericUpDown.Value exactly (it is nullable while the
+		// box is empty mid-edit); each one writes through to the settings as soon as it has a value,
+		// so the whole UI restyles live while the setting is being changed.
+		public decimal MinimumFontSize { get; } = FontSizeManager.MinimumFontSize;
+		public decimal MaximumFontSize { get; } = FontSizeManager.MaximumFontSize;
+
+		[ObservableProperty] private decimal? uiFontSize;
+		[ObservableProperty] private decimal? logListFontSize;
+		[ObservableProperty] private decimal? encounterTreeFontSize;
+
 		/// <summary>Available dps.report upload domains, matching the Eto
 		/// <c>DpsReportUploadSettingsPage</c>'s radio list. Includes the currently configured domain
 		/// as an extra option if it no longer matches any known domain.</summary>
@@ -53,6 +63,9 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.ViewModels
 			LogDirectories = new ObservableCollection<string>(settings.LogRootPaths);
 			excludeShortLogs = settings.MinimumLogDurationSeconds.HasValue;
 			minimumLogDurationText = (settings.MinimumLogDurationSeconds ?? 5).ToString();
+			uiFontSize = settings.UiFontSize;
+			logListFontSize = settings.LogListFontSize;
+			encounterTreeFontSize = settings.EncounterTreeFontSize;
 
 			var domains = DpsReportUploader.AvailableDomains;
 			var currentDomain = domains.FirstOrDefault(x => x.Domain == settings.DpsReportDomain);
@@ -137,6 +150,38 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.ViewModels
 			{
 				Settings.MinimumLogDurationSeconds = seconds;
 			}
+		}
+
+		partial void OnUiFontSizeChanged(decimal? value)
+		{
+			if (value.HasValue)
+			{
+				Settings.UiFontSize = FontSizeManager.Clamp((int) value.Value);
+			}
+		}
+
+		partial void OnLogListFontSizeChanged(decimal? value)
+		{
+			if (value.HasValue)
+			{
+				Settings.LogListFontSize = FontSizeManager.Clamp((int) value.Value);
+			}
+		}
+
+		partial void OnEncounterTreeFontSizeChanged(decimal? value)
+		{
+			if (value.HasValue)
+			{
+				Settings.EncounterTreeFontSize = FontSizeManager.Clamp((int) value.Value);
+			}
+		}
+
+		[RelayCommand]
+		private void ResetFontSizes()
+		{
+			UiFontSize = FontSizeManager.DefaultFontSize;
+			LogListFontSize = FontSizeManager.DefaultFontSize;
+			EncounterTreeFontSize = FontSizeManager.DefaultFontSize;
 		}
 
 		[RelayCommand]

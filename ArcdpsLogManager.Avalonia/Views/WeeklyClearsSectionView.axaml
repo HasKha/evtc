@@ -65,19 +65,19 @@
                                                                     BorderThickness="1" CornerRadius="4" Padding="6,4"
                                                                     Margin="0,0,6,6" MinWidth="170">
                                                                 <StackPanel Spacing="3">
-                                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="11" />
+                                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="{DynamicResource AppFontSizeSmall}" />
                                                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                                                         <Border Classes.mono="{Binding NormalMode.IsMonochromeIcon}">
                                                                             <Image Source="{Binding NormalMode.Icon}" Width="16" Height="16" />
                                                                         </Border>
-                                                                        <TextBlock Text="{Binding NormalMode.Text}" FontSize="11"
+                                                                        <TextBlock Text="{Binding NormalMode.Text}" FontSize="{DynamicResource AppFontSizeSmall}"
                                                                                    VerticalAlignment="Center" />
                                                                     </StackPanel>
                                                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                                                         <Border Classes.mono="{Binding ChallengeMode.IsMonochromeIcon}">
                                                                             <Image Source="{Binding ChallengeMode.Icon}" Width="16" Height="16" />
                                                                         </Border>
-                                                                        <TextBlock Text="{Binding ChallengeMode.Text}" FontSize="11"
+                                                                        <TextBlock Text="{Binding ChallengeMode.Text}" FontSize="{DynamicResource AppFontSizeSmall}"
                                                                                    VerticalAlignment="Center" />
                                                                     </StackPanel>
                                                                 </StackPanel>

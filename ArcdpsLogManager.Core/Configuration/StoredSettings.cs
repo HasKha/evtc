@@ -37,6 +37,28 @@ public class StoredSettings
 	public bool CompactUi { get; set; } = false;
 
 	/// <summary>
+	/// The default for every font size below, in device-independent pixels. Matches the sizes the
+	/// Avalonia UI was originally built around, so the defaults leave the app looking as it did
+	/// before the font sizes became configurable.
+	/// </summary>
+	public const int DefaultFontSize = 13;
+
+	/// <summary>
+	/// The base font size of the application, in device-independent pixels. Headings, small print
+	/// and the sizes baked into control templates are all derived from it. Used by the Avalonia UI;
+	/// ignored by the legacy Eto UI.
+	/// </summary>
+	public int UiFontSize { get; set; } = DefaultFontSize;
+
+	/// <summary>
+	/// Font sizes of the two big lists, kept separate from <see cref="UiFontSize"/> because they
+	/// dominate the window and are commonly wanted denser (more rows on screen) or larger (easier
+	/// to read) than the surrounding UI. Used by the Avalonia UI; ignored by the legacy Eto UI.
+	/// </summary>
+	public int LogListFontSize { get; set; } = DefaultFontSize;
+	public int EncounterTreeFontSize { get; set; } = DefaultFontSize;
+
+	/// <summary>
 	/// Sidebar filter section visibility toggles. Used by the Avalonia UI; ignored by the legacy
 	/// Eto UI, which has no equivalent per-section visibility control.
 	/// </summary>

@@ -16,7 +16,7 @@
              scrolling internally if needed), tags, upload status (both pinned to the bottom). -->
         <Grid IsVisible="{Binding HasSelection}" RowDefinitions="Auto,*,Auto,Auto,Auto" Margin="12">
             <StackPanel Grid.Row="0" Spacing="6">
-                <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" />
+                <TextBlock Text="{Binding Name}" FontSize="{DynamicResource AppFontSizeHeader}" FontWeight="Bold" TextWrapping="Wrap" />
                 <TextBlock Text="{Binding ModeText}" FontStyle="Italic" TextWrapping="Wrap"
                            IsVisible="{Binding HasMode}" />
                 <TextBlock Text="{Binding ResultText}" />
@@ -99,7 +99,7 @@
                                         CornerRadius="4" Padding="6,2" Margin="0,0,4,4">
                                     <StackPanel Orientation="Horizontal" Spacing="4">
                                         <TextBlock Text="{Binding}" VerticalAlignment="Center" />
-                                        <Button Content="✕" Padding="2,0" FontSize="10"
+                                        <Button Content="✕" Padding="2,0" FontSize="{DynamicResource AppFontSizeSmall}"
                                                 Background="Transparent" BorderThickness="0"
                                                 Command="{Binding $parent[ItemsControl].((vm:LogDetailPanelViewModel)DataContext).RemoveTagCommand}"
                                                 CommandParameter="{Binding}" />

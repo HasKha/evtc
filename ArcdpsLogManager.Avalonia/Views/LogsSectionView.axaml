@@ -18,6 +18,30 @@
                   CanUserResizeColumns="True"
                   GridLinesVisibility="Horizontal"
                   SelectionMode="Extended">
+            <!-- The log list's own font size. Setting FontSize on the DataGrid itself does nothing:
+                 Fluent's DataGrid control themes hardcode it per part (DataGridCell 15,
+                 DataGridColumnHeader 12), and a control theme setter takes precedence over an
+                 inherited value, so the cells never see what the grid inherits. Styles do take
+                 precedence over control themes, hence the per-part setters here. This also evens
+                 out that stock 15/12 mismatch, where the headers were smaller than the rows.
+
+                 The same themes also pin MinHeight to 32, which is what actually decides the row
+                 height at any normal font size, so it is overridden alongside the font. -->
+            <DataGrid.Styles>
+                <Style Selector="DataGridCell">
+                    <Setter Property="FontSize" Value="{DynamicResource LogListFontSize}" />
+                    <Setter Property="MinHeight" Value="{DynamicResource LogListRowMinHeight}" />
+                </Style>
+                <Style Selector="DataGridColumnHeader">
+                    <Setter Property="FontSize" Value="{DynamicResource LogListFontSize}" />
+                    <Setter Property="MinHeight" Value="{DynamicResource LogListRowMinHeight}" />
+                </Style>
+                <!-- The favorite column's ★ is a Button, whose template sizes its content from
+                     ControlContentThemeFontSize (the app-wide size) rather than from the cell. -->
+                <Style Selector="DataGridCell Button">
+                    <Setter Property="FontSize" Value="{DynamicResource LogListFontSize}" />
+                </Style>
+            </DataGrid.Styles>
             <DataGrid.Columns>
                 <!-- Favorite: a ★/☆ toggle button that persists through the log cache. -->
                 <DataGridTemplateColumn Header="★" Width="34" SortMemberPath="Favorite">
@@ -38,7 +62,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate x:DataType="models:LogRow">
                             <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
-                                <Image Source="{Binding EncounterIcon}" Width="20" Height="20"
+                                <Image Source="{Binding EncounterIcon}"
+                                       Width="{DynamicResource LogListIconSize}"
+                                       Height="{DynamicResource LogListIconSize}"
                                        VerticalAlignment="Center" />
                                 <TextBlock Text="{Binding Encounter}" VerticalAlignment="Center" />
                             </StackPanel>
@@ -60,7 +86,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding}" Width="18" Height="18" />
+                                        <Image Source="{Binding}"
+                                               Width="{DynamicResource LogListSmallIconSize}"
+                                               Height="{DynamicResource LogListSmallIconSize}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
@@ -83,7 +111,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding}" Width="18" Height="18" />
+                                        <Image Source="{Binding}"
+                                               Width="{DynamicResource LogListSmallIconSize}"
+                                               Height="{DynamicResource LogListSmallIconSize}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>

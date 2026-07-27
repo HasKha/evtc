@@ -47,6 +47,9 @@ namespace GW2Scratch.ArcdpsLogManager.Configuration
 			WeeklyClearGroupsChanged += (sender, args) => SaveToFile();
 			ThemeChanged += (sender, args) => SaveToFile();
 			CompactUiChanged += (sender, args) => SaveToFile();
+			UiFontSizeChanged += (sender, args) => SaveToFile();
+			LogListFontSizeChanged += (sender, args) => SaveToFile();
+			EncounterTreeFontSizeChanged += (sender, args) => SaveToFile();
 			ShowFavoritesFilterChanged += (sender, args) => SaveToFile();
 			ShowPlayerCountFilterChanged += (sender, args) => SaveToFile();
 			ShowDateRangeFilterChanged += (sender, args) => SaveToFile();
@@ -363,6 +366,45 @@ namespace GW2Scratch.ArcdpsLogManager.Configuration
 			}
 		}
 
+		public static int UiFontSize
+		{
+			get => Values.UiFontSize;
+			set
+			{
+				if (Values.UiFontSize != value)
+				{
+					Values.UiFontSize = value;
+					OnUiFontSizeChanged();
+				}
+			}
+		}
+
+		public static int LogListFontSize
+		{
+			get => Values.LogListFontSize;
+			set
+			{
+				if (Values.LogListFontSize != value)
+				{
+					Values.LogListFontSize = value;
+					OnLogListFontSizeChanged();
+				}
+			}
+		}
+
+		public static int EncounterTreeFontSize
+		{
+			get => Values.EncounterTreeFontSize;
+			set
+			{
+				if (Values.EncounterTreeFontSize != value)
+				{
+					Values.EncounterTreeFontSize = value;
+					OnEncounterTreeFontSizeChanged();
+				}
+			}
+		}
+
 		public static bool ShowFavoritesFilter
 		{
 			get => Values.ShowFavoritesFilter;
@@ -448,6 +490,9 @@ namespace GW2Scratch.ArcdpsLogManager.Configuration
 		public static event EventHandler<EventArgs> WeeklyClearGroupsChanged;
 		public static event EventHandler<EventArgs> ThemeChanged;
 		public static event EventHandler<EventArgs> CompactUiChanged;
+		public static event EventHandler<EventArgs> UiFontSizeChanged;
+		public static event EventHandler<EventArgs> LogListFontSizeChanged;
+		public static event EventHandler<EventArgs> EncounterTreeFontSizeChanged;
 		public static event EventHandler<EventArgs> ShowFavoritesFilterChanged;
 		public static event EventHandler<EventArgs> ShowPlayerCountFilterChanged;
 		public static event EventHandler<EventArgs> ShowDateRangeFilterChanged;
@@ -546,6 +591,21 @@ namespace GW2Scratch.ArcdpsLogManager.Configuration
 		private static void OnCompactUiChanged()
 		{
 			CompactUiChanged?.Invoke(null, EventArgs.Empty);
+		}
+
+		private static void OnUiFontSizeChanged()
+		{
+			UiFontSizeChanged?.Invoke(null, EventArgs.Empty);
+		}
+
+		private static void OnLogListFontSizeChanged()
+		{
+			LogListFontSizeChanged?.Invoke(null, EventArgs.Empty);
+		}
+
+		private static void OnEncounterTreeFontSizeChanged()
+		{
+			EncounterTreeFontSizeChanged?.Invoke(null, EventArgs.Empty);
 		}
 
 		private static void OnShowFavoritesFilterChanged()

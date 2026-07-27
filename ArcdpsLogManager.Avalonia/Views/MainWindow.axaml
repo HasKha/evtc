@@ -184,11 +184,11 @@
                                                      Margin="0,4,0,0" IsVisible="{Binding ShowDateRangeFilter}">
                                 <StackPanel Spacing="6">
                                     <StackPanel Spacing="2">
-                                        <TextBlock Text="From" FontSize="11" Opacity="0.7" />
+                                        <TextBlock Text="From" FontSize="{DynamicResource AppFontSizeSmall}" Opacity="0.7" />
                                         <DatePicker SelectedDate="{Binding MinDate}" HorizontalAlignment="Stretch" />
                                     </StackPanel>
                                     <StackPanel Spacing="2">
-                                        <TextBlock Text="To" FontSize="11" Opacity="0.7" />
+                                        <TextBlock Text="To" FontSize="{DynamicResource AppFontSizeSmall}" Opacity="0.7" />
                                         <DatePicker SelectedDate="{Binding MaxDate}" HorizontalAlignment="Stretch" />
                                     </StackPanel>
                                     <Button Content="Clear dates" Command="{Binding ClearDatesCommand}"
@@ -215,14 +215,17 @@
 
                     <TextBlock DockPanel.Dock="Top" Text="Encounters" FontWeight="SemiBold" Margin="0,8,0,4" />
                     <TreeView ItemsSource="{Binding EncounterGroups}"
-                              SelectedItem="{Binding SelectedGroup}">
+                              SelectedItem="{Binding SelectedGroup}"
+                              FontSize="{DynamicResource EncounterTreeFontSize}">
                         <TreeView.Styles>
                             <!-- Always compact here, independent of Settings.CompactUi (which only
                                  controls the app-wide FluentTheme density): this list can get long
-                                 with all encounters, so dense rows matter more here than elsewhere. -->
+                                 with all encounters, so dense rows matter more here than elsewhere.
+                                 The row floor tracks the tree's own font size so that shrinking the
+                                 font actually shrinks the rows instead of stopping at a fixed 24. -->
                             <Style Selector="TreeViewItem">
                                 <Setter Property="Padding" Value="4,2" />
-                                <Setter Property="MinHeight" Value="24" />
+                                <Setter Property="MinHeight" Value="{DynamicResource EncounterTreeItemMinHeight}" />
                             </Style>
                             <Style Selector="TreeViewItem" x:DataType="models:LogGroupNode">
                                 <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
@@ -232,7 +235,9 @@
                             <TreeDataTemplate ItemsSource="{Binding Children}"
                                               x:DataType="models:LogGroupNode">
                                 <Grid ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
-                                    <Image Grid.Column="0" Source="{Binding Icon}" Width="16" Height="16"
+                                    <Image Grid.Column="0" Source="{Binding Icon}"
+                                           Width="{DynamicResource EncounterTreeIconSize}"
+                                           Height="{DynamicResource EncounterTreeIconSize}"
                                            VerticalAlignment="Center" Margin="0,0,6,0" />
                                     <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" />
                                     <TextBlock Grid.Column="2" Text="{Binding LogCount}" VerticalAlignment="Center"
@@ -250,7 +255,7 @@
             <TabControl Grid.Column="2">
                 <TabControl.Styles>
                     <Style Selector="TabItem">
-                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="FontSize" Value="{DynamicResource AppFontSizeLarge}" />
                     </Style>
                 </TabControl.Styles>
                 <TabItem Header="Logs">

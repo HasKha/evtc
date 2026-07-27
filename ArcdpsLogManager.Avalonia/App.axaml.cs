@@ -18,13 +18,17 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia
 
 		public override void OnFrameworkInitializationCompleted()
 		{
-			// Apply the persisted theme/density preferences before any window is shown, and keep
-			// re-applying live as they're changed from the Settings window (which binds directly to
-			// the static Settings class, not through MainWindowViewModel).
+			// Apply the persisted theme/density/font size preferences before any window is shown,
+			// and keep re-applying live as they're changed from the Settings window (which binds
+			// directly to the static Settings class, not through MainWindowViewModel).
 			ThemeManager.Apply(Settings.Theme);
 			DensityManager.Apply(Settings.CompactUi);
+			ApplyFontSizes();
 			Settings.ThemeChanged += (_, _) => ThemeManager.Apply(Settings.Theme);
 			Settings.CompactUiChanged += (_, _) => DensityManager.Apply(Settings.CompactUi);
+			Settings.UiFontSizeChanged += (_, _) => ApplyFontSizes();
+			Settings.LogListFontSizeChanged += (_, _) => ApplyFontSizes();
+			Settings.EncounterTreeFontSizeChanged += (_, _) => ApplyFontSizes();
 
 			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
 			{
@@ -45,6 +49,11 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia
 			}
 
 			base.OnFrameworkInitializationCompleted();
+		}
+
+		private static void ApplyFontSizes()
+		{
+			FontSizeManager.Apply(Settings.UiFontSize, Settings.LogListFontSize, Settings.EncounterTreeFontSize);
 		}
 
 		private static async System.Threading.Tasks.Task LoadAndShowMainWindowAsync(

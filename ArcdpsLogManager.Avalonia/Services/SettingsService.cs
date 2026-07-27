@@ -18,6 +18,9 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.Services
 			// Mirror the underlying static change events as INotifyPropertyChanged notifications.
 			Settings.ThemeChanged += (_, _) => Raise(nameof(Theme));
 			Settings.CompactUiChanged += (_, _) => Raise(nameof(CompactUi));
+			Settings.UiFontSizeChanged += (_, _) => Raise(nameof(UiFontSize));
+			Settings.LogListFontSizeChanged += (_, _) => Raise(nameof(LogListFontSize));
+			Settings.EncounterTreeFontSizeChanged += (_, _) => Raise(nameof(EncounterTreeFontSize));
 			Settings.ShowFilterSidebarChanged += (_, _) => Raise(nameof(ShowFilterSidebar));
 			Settings.ShowDebugDataChanged += (_, _) => Raise(nameof(ShowDebugData));
 			Settings.ShowGuildTagsInLogDetailChanged += (_, _) => Raise(nameof(ShowGuildTagsInLogDetail));
@@ -53,6 +56,24 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.Services
 		{
 			get => Settings.CompactUi;
 			set => Settings.CompactUi = value;
+		}
+
+		public int UiFontSize
+		{
+			get => Settings.UiFontSize;
+			set => Settings.UiFontSize = value;
+		}
+
+		public int LogListFontSize
+		{
+			get => Settings.LogListFontSize;
+			set => Settings.LogListFontSize = value;
+		}
+
+		public int EncounterTreeFontSize
+		{
+			get => Settings.EncounterTreeFontSize;
+			set => Settings.EncounterTreeFontSize = value;
 		}
 
 		public bool ShowFilterSidebar

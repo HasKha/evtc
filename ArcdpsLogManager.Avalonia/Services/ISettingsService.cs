@@ -19,6 +19,9 @@ namespace GW2Scratch.ArcdpsLogManager.Avalonia.Services
 	{
 		ApplicationTheme Theme { get; set; }
 		bool CompactUi { get; set; }
+		int UiFontSize { get; set; }
+		int LogListFontSize { get; set; }
+		int EncounterTreeFontSize { get; set; }
 		bool ShowFilterSidebar { get; set; }
 		bool ShowDebugData { get; set; }
 		bool ShowGuildTagsInLogDetail { get; set; }
